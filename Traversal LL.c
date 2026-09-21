@@ -34,7 +34,7 @@ struct Node * insertatindex(struct Node * head , int data , int index){
         int i = 0;
         
         while  (i != index-1){
-            p = p -> next;
+            p =  p -> next;
             i++;
         }
         ptr -> data = data;
@@ -67,61 +67,6 @@ struct Node * insertafternode(struct Node * head , struct Node * prinode, int da
     return head;
 }
 
-// Delete the first node:-
-struct Node * deletefirstNode(struct Node * head){
-    struct Node * ptr = head;
-    head = head -> next;
-    free(ptr);
-    return head;
-}
-
-// Delete the Node at given index:-
-struct Node * deleteNodeatindex(struct Node * head , int index){
-    struct Node * p = head;
-    struct Node * q = head -> next;
-    
-    int i = 0;
-    while (i != index-1){
-        p = p -> next;
-        q = q -> next;
-        i ++;
-    }
-    p -> next = q -> next;
-    free(q);
-    return head;
-}
-
-// Delete the Node at the end:
-struct Node * Deletenodeatend(struct Node * head){
-    struct Node * p = head;
-    struct Node * q = head -> next;
-    
-    while(q->next != NULL){
-        p = p -> next;
-        q = q -> next;
-    }
-    p -> next = NULL;
-        free(q);
-    return head;
-}
-
-// Delete the Node after give node;
-struct Node * deleteafternode(struct Node * head , int value){
-    struct Node * p = head;
-    struct Node * q = head -> next;
-    
-    while(q -> data != value && q -> next != NULL){
-        p = p -> next ;
-        q = q -> next ;
-    }
-    
-    if (q -> data == value){
-    p -> next = q -> next;
-    free(q);
-    }
-    return head;
-}
-    
 
 int main() {
     struct Node * head;
@@ -146,15 +91,13 @@ int main() {
     third  -> data = 2;
     third  -> next = NULL;
     
-printf("Before insertion\n");
 linklistTraversal(head);
 // Insert node at first :-
 // head = insertatfirst(head,45);
 // head = insertatindex(head, 67 , 1);
-// head = insertatend(head , 66);
-// head = insertafternode(head, second, 33);
+//  head =  insertatend(head, 65);
+head = insertafternode(head, first , 45);
 
-printf("After insertion\n");
 linklistTraversal(head);
     
 return 0;
